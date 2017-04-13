@@ -1,0 +1,48 @@
+.btn {
+    margin: 1em 1em 0 0;
+}
+
+.face-block {
+    display: inline-block;
+    margin: 1em 0;
+}
+
+.label {
+    font-size: 1.2em;
+    padding: 1em 1em;
+}
+
+.right-box {
+    display: inline-block;
+    margin: 2em 0;
+}
+
+.left-box {
+    margin: 1.5em 0;
+    float: left;
+}
+
+.form-control {
+    position: absolute;
+    left: 100px;
+    top: 250px;
+}
+
+#buttons {
+    position: absolute;
+    left: 10px;
+    top: 0px;
+}
+
+button {
+    margin-top: 10px;
+    display: block;
+}
+
+#container {
+    position: absolute;
+    left: 160px;
+    top: 90px;
+    max-width: 100%;
+    height: auto;
+}

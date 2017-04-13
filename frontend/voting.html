@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Meta information -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Image labeling system for Emotibot">
+  <meta name="author" content="Chang Hui-Tang">
+  <link rel="icon" href="">
+  <title>Emotibot 影像標註系統</title>
+  <!-- CSS Files -->
+  
+
+
+  <link href="static/css/bootstrap.css" media="screen" rel="stylesheet" type="text/css" />
+  <link href="static/css/navbar-fixed-top.css" rel="stylesheet" type="text/css" />
+  <link href="static/css/jquery-impromptu.css" rel="stylesheet" type="text/css" />
+  <link href="static/css/voting.css" rel="stylesheet" type="text/css" />
+  <link href="static/css/misc.css" rel="stylesheet" type="text/css" />
+  <!-- JS Files -->
+  <script src="static/js/jquery.min.js" type="text/javascript"></script>
+  <script src="static/js/bootstrap.min.js" type="text/javascript"></script>
+  <script src="static/js/jquery-impromptu.js" type="text/javascript"></script>
+  <script src="static/js/voting.js" type="text/javascript"></script>
+<!--   <script>
+  $(function() {
+    $("#includedNavBar").load("static/navbar.html");
+  });
+  </script>
+ -->  <script>
+  setURL("{{ backend_url }}")
+  </script>
+</head>
+
+<body>
+  <!-- <div id="includedNavBar"></div>
+ -->  <div class="container">
+    
+    <div class="row" align="center">
+      <div class="col-md-4" align="center">
+        <div class="panel panel-primary">
+          <div class="panel-heading">圖片</div>
+          <div class="panel-body">
+            <div class="row">
+              <img src="" style="width:80%;" id="image">
+            </div>
+            <div class="row">
+              <!-- <span class="label label-info" id="image_index"></span> -->
+              <span class="label label-info" id="image_count"></span>
+              <span class="label label-warning" id="image_label">未標記</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5" align="center">
+        <div class="panel panel-info">
+          <div class="panel-heading">情緒</div>
+          <div class="panel-body">
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numhappy">開心 <span class="badge" id="num-happy">0</span>
+                </button>
+              </div>
+              <div class="col-md-9 face-block" aligh="left">
+                <input type="image" class="face-rate face-rate-happy" src="static/images/emotion/happy1.png" id="happyY1" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-happy" src="static/images/emotion/happy2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-happy" src="static/images/emotion/happy3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-happy" src="static/images/emotion/happy4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-happy" src="static/images/emotion/happy5.png" alt="top" value="5">
+              </div>
+            </div>
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numsad">哀傷 <span class="badge" id="num-sad">0</span></button>
+              </div>
+              <div class="col-md-9 face-block">
+                <input type="image" class="face-rate face-rate-sad" src="static/images/emotion/sad1.png" id="sadY1" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-sad" src="static/images/emotion/sad2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-sad" src="static/images/emotion/sad3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-sad" src="static/images/emotion/sad4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-sad" src="static/images/emotion/sad5.png" alt="top" value="5">
+              </div>
+            </div>
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numangry">生氣 <span class="badge" id="num-angry">0</span></button>
+              </div>
+              <div class="col-md-9 face-block">
+                <input type="image" class="face-rate face-rate-angry" src="static/images/emotion/angry1.png" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-angry" src="static/images/emotion/angry2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-angry" src="static/images/emotion/angry3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-angry" src="static/images/emotion/angry4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-angry" src="static/images/emotion/angry5.png" alt="top" value="5">
+              </div>
+            </div>
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numdisgust">厭惡 <span class="badge" id="num-disgust">0</span></button>
+              </div>
+              <div class="col-md-9 face-block">
+                <input type="image" class="face-rate face-rate-disgust" src="static/images/emotion/disgust1.png" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-disgust" src="static/images/emotion/disgust2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-disgust" src="static/images/emotion/disgust3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-disgust" src="static/images/emotion/disgust4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-disgust" src="static/images/emotion/disgust5.png" alt="top" value="5">
+              </div>
+            </div>
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numsurprise">驚訝 <span class="badge" id="num-surprise">0</span></button>
+              </div>
+              <div class="col-md-9 face-block">
+                <input type="image" class="face-rate face-rate-surprise" src="static/images/emotion/surprise1.png" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-surprise" src="static/images/emotion/surprise2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-surprise" src="static/images/emotion/surprise3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-surprise" src="static/images/emotion/surprise4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-surprise" src="static/images/emotion/surprise5.png" alt="top" value="5">
+              </div>
+            </div>
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numcontempt">鄙視 <span class="badge" id="num-contempt">0</span></button>
+              </div>
+              <div class="col-md-9 face-block">
+                <input type="image" class="face-rate face-rate-contempt" src="static/images/emotion/contempt1.png" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-contempt" src="static/images/emotion/contempt2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-contempt" src="static/images/emotion/contempt3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-contempt" src="static/images/emotion/contempt4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-contempt" src="static/images/emotion/contempt5.png" alt="top" value="5">
+              </div>
+            </div>
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numafraid">害怕 <span class="badge" id="num-afraid">0</span></button>
+              </div>
+              <div class="col-md-9 face-block">
+                <input type="image" class="face-rate face-rate-afraid" src="static/images/emotion/afraid1.png" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-afraid" src="static/images/emotion/afraid2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-afraid" src="static/images/emotion/afraid3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-afraid" src="static/images/emotion/afraid4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-afraid" src="static/images/emotion/afraid5.png" alt="top" value="5">
+              </div>
+            </div>
+            <div class="row emotion-row">
+              <div class="col-md-3" align="right">
+                <button type="button" class="btn btn-primary face-title" id="numconfused">困惑 <span class="badge" id="num-confused">0</span></button>
+              </div>
+              <div class="col-md-9 face-block">
+                <input type="image" class="face-rate face-rate-confused" src="static/images/emotion/confused1.png" alt="top" value="1">
+                <input type="image" class="face-rate face-rate-confused" src="static/images/emotion/confused2.png" alt="top" value="2">
+                <input type="image" class="face-rate face-rate-confused" src="static/images/emotion/confused3.png" alt="top" value="3">
+                <input type="image" class="face-rate face-rate-confused" src="static/images/emotion/confused4.png" alt="top" value="4">
+                <input type="image" class="face-rate face-rate-confused" src="static/images/emotion/confused5.png" alt="top" value="5">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3" align="left">
+        <div class="panel panel-info">
+          <div class="panel-heading">其他</div>
+          <div class="panel-body">
+            <div class="row emotion-row" style="margin-left:0px;">
+              <button type="button" class="btn btn-primary">表情</button>
+              <label class="attr-radio">
+                <input type="checkbox" value="" id="check-squint">瞇眼</label>
+              <label class="attr-radio">
+                <input type="checkbox" value="" id="check-pout">嘟嘴</label>
+              <label class="attr-radio">
+                <input type="checkbox" value="" id="check-tongue">吐舌頭</label>
+            </div>
+            <div class="row emotion-row" style="margin-left:0px;">
+              <button type="button" class="btn btn-primary">性別</button>
+              <label class="attr-radio">
+                <input type="radio" name="gender" id="check-boy" value='male'>男</label>
+              <label class="attr-radio">
+                <input type="radio" name="gender" id="check-girl" value='female'>女</label>
+              <label class="attr-radio">
+                <input type="radio" name="gender" id="check-none" value='unknown'>分不出</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <form class="navbar-form" style="text-align: center;">
+          <!-- <select class="form-control btn-info" align="center" style=" text-align-last:center; " id="show_image">
+            <option value="show_todo">僅顯示未完成</option>
+            <option value="show_all">顯示所有臉</option>
+          </select> -->
+          <button type="button" class="btn btn-danger" id="btn_clear">
+            清空 (ESC)
+          </button>
+          <button type="button" class="btn btn-danger" id="btn_garbage">
+            垃圾 (Ctrl-G)
+          </button>
+          <!-- <button type="button" class="btn btn-success" id="btn_prev_image">
+            上一張 (Pg-Up)
+          </button> -->
+          <button type="button" class="btn btn-success" id="btn_next_image">
+            下一張 (Pg-Dn or Space)
+          </button>
+        </form>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+</body>
+<!-- End of body -->
+
+</html>

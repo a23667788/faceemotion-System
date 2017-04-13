@@ -1,0 +1,1 @@
+curl -H "Content-Type: application/json" http://0.0.0.0:8081/datasets/DataTang/00010.jpg/meta -d '{"test":123,"a":234}' -X POST

@@ -1,0 +1,32 @@
+.face-title {
+    margin-left: 10px;
+}
+
+.face-block {
+    margin-top: -5px;
+    margin-left: -10px;
+}
+
+.label-emotion {
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.face-rate {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 48px;
+    height: 48px;
+}
+
+.emotion-row {
+    padding: 10px;
+    height: 60px;
+    width: 100%;
+}
+
+.num-stat {
+    font-size: 15px;
+}
